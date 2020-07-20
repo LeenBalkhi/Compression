@@ -75,7 +75,7 @@ public class LZW {
             }
         }
 
-        File outputfile = new File("C:\\Users\\Leen\\Desktop\\Multimedia\\Compression\\src\\Res\\t.jpg");
+        File outputfile = new File("src\\Res\\t.jpg");
         ImageIO.write(img, "jpg", outputfile);
 
     }
