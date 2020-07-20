@@ -3,6 +3,6 @@ import java.util.LinkedHashMap;
 public class ShannonFanoNode {
 
     int weight;
-    LinkedHashMap<String , Double> frequency = new LinkedHashMap<>();
+    LinkedHashMap<Byte , Integer> frequency = new LinkedHashMap<>();
     ShannonFanoNode parent = new ShannonFanoNode();
 }
