@@ -1,5 +1,7 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,6 +25,16 @@ public class LZW {
         this.file = file;
 
       BufferedImage  image = ImageIO.read(file);
+
+      //Reading the image as a byte array
+//        WritableRaster raster = image .getRaster();
+//        DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+//        byte [] b = data.getData();
+//
+//        for(int i=0 ; i < b.length; i++)
+//        {
+//            System.out.print(b[i]);
+//        }
         int width = image.getWidth();
         int height = image.getHeight();
         int [][] arr = new int[width][height];
@@ -41,16 +53,18 @@ public class LZW {
         {
             for(int j=0; j< height ; j++)
             {
-                if(dictionary.containsKey(arr[i][j]))
+
+                if(dictionary.containsKey( s+ arr[i][j]))
                 {
                     s= ""+ s+ dictionary.get(arr[i][j]);
                 }
                 else
                 {
-                    s="" +s+arr[i][j];
+                    s="" +s+dictionary.get(arr[i][j]);
                     outputarr[i][j] = arr[i][j];
                     dictionary.put(s, lastEntry+1);
                     s= ""+ dictionary.get(arr[i][j]);
+                    lastEntry = dictionary.size();
                 }
             }
         }
