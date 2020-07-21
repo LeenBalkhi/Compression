@@ -60,7 +60,7 @@ public class ShannonFano {
             if(sum >= node.repetition/2)
             {
                 list.add(Firstnode);
-               // break;
+                break;
             }
         }
         return list;

@@ -11,7 +11,7 @@ public class LZW {
 
     File file ;
     Map<String, Integer> dictionary = new LinkedHashMap<>();
-    int lastEntry = 128;
+    int lastEntry = 256;
     public void setUpDictionary()
     {
         for(int i=0 ; i <  lastEntry; i++)
@@ -47,6 +47,8 @@ public class LZW {
             }
         }
 
+        //try processing the uncompressed file as a string'
+        // and the compressed output as a list of integers
         String s="";
         int [][] outputarr = new int [width][height];
         for(int i =0 ; i < width ; i++)
