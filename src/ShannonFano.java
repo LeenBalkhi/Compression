@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import java.util.TreeMap;
+
 public class ShannonFano {
 
     //path/file
@@ -28,10 +30,10 @@ public class ShannonFano {
            if(newNode.frequency.containsKey(b[i])){
               int repetion= newNode.frequency.get(b[i]);
 
-               newNode.frequency.put(b[i],repetion+1);
+               newNode.frequency.put(repetion+1, b[i]);
            }
            else{
-               newNode.frequency.put(b[i],1);
+               newNode.frequency.put(1, b[i]);
            }
 
         }
@@ -45,21 +47,24 @@ public class ShannonFano {
     {
         LinkedList<ShannonFanoNode> list = new LinkedList<>();
         int sum =0;
-        for(Map.Entry<Byte , Integer> frequency: node.frequency.entrySet())
+        for(Map.Entry< Integer, Byte> frequency: node.frequency.entrySet())
         {
             sum+=frequency.getValue();
         }
         node.repetition = sum;
 
         ShannonFanoNode Firstnode = new ShannonFanoNode();
-        for(Map.Entry<Byte , Integer> frequency: node.frequency.entrySet())
+        int index=0;
+        for(Map.Entry< Integer , Byte> frequency: node.frequency.entrySet())
         {
 
             sum+=frequency.getValue();
             Firstnode.frequency.put(frequency.getKey(), frequency.getValue());
+            index++;
             if(sum >= node.repetition/2)
             {
-                list.add(Firstnode);
+                ShannonFanoNode temp = new ShannonFanoNode();
+                //temp.frequency = Firstnode.frequency.subMap(0, 2);
                 break;
             }
         }
