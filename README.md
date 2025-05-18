@@ -47,7 +47,3 @@ Follow the on-screen prompts to compress or decompress files.
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
-
-## License
-
-This project is open-source and available under the MIT License.
